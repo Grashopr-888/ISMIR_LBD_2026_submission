@@ -1,0 +1,65 @@
+{
+  "host_config": {
+    "samplerate": 48000,
+    "playing_mode": "playing"
+  },
+  "tracks": [
+    {
+      "name": "GRANULAR_TRACK",
+      "channels": 2,
+      "inputs": [
+        {
+          "engine_channel": 0,
+          "track_channel": 0
+        },
+        {
+          "engine_channel": 0,
+          "track_channel": 1
+        }
+      ],
+      "outputs": [
+        {
+          "engine_channel": 0,
+          "track_channel": 0
+        },
+        {
+          "engine_channel": 1,
+          "track_channel": 1
+        },
+        {
+          "engine_channel": 2,
+          "track_channel": 0
+        },
+        {
+          "engine_channel": 3,
+          "track_channel": 1
+        }
+      ],
+      "plugins": [
+        {
+          "path": "ElkGranular.vst3",
+          "name": "granular",
+          "type": "vst3x",
+          "uid": "ElkGranular"
+        }
+      ]
+    }
+  ],
+  "initial_state": [
+    {
+      "processor": "granular",
+      "parameters": {
+        "wet": 1.0,
+        "tau": 0.1666667,
+        "gate_db": 0.5,
+        "bar_seconds": 0.2,
+        "stick": 0.0,
+        "variety": 0.0,
+        "gain_match": 1.0,
+        "embed_mode": 0.0,
+        "seed": 0.0,
+        "hold": 0.0
+      }
+    }
+  ]
+}
