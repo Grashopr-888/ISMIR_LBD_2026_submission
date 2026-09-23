@@ -1,0 +1,37 @@
+# Environment for the code and notebooks. Versions of the audio/ML stack are pinned to the ones that
+# produced the paper's results (the corpus builder's environment, 25 Aug 2026); uv.lock pins the rest.
+[project]
+name = "elk-latent-distillation"
+version = "1.0.0"
+description = "Code, logs and notebooks for the ISMIR 2026 late-breaking demo 'Neural Codec Latent Distillation for Corpus Retrieval Synthesis on the Elk Stomp'"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Trent Eriksen" }]
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "music2latent==0.1.8",   # weights CC BY-NC 4.0, downloaded on first use (see THIRD_PARTY.md)
+    "torch==2.13.0",
+    "librosa==1.0.0",
+    "soundfile==0.14.0",
+    "numpy==2.5.2",
+    "scipy==1.18.0",
+    "matplotlib>=3.9",
+    "jupyterlab>=4.2",
+    "nbconvert>=7.16",
+    "ipykernel>=6.29",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["latent", "corpus_builder", "distillation", "analysis"]
+
+[tool.pytest.ini_options]
+testpaths = ["corpus_builder/tests"]
+addopts = "-ra"

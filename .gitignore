@@ -1,0 +1,41 @@
+# Environments and caches
+.venv/
+*.egg-info/
+build/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Everything derived from audio stays local: latent caches, packs, query clips, Experiment 1 intermediates
+work/
+*.elkgrain
+*.npz
+*.npy
+*.pt
+
+# Audio is never committed (MUSDB18 terms; recording rights)
+*.wav
+*.flac
+*.aif
+*.aiff
+*.mp3
+*.m4a
+*.ogg
+*.mp4
+
+# Your own data designation for Experiment 1 (lists your recordings)
+distillation/data.toml
+
+# Build trees
+plugin/build*/
+plugin/.deps/
+
+# Generated figures (redrawn by the notebooks and figures/*.py)
+figures/*.pdf
+figures/*.png
+figures/*.aux
+figures/*.log
+
+# Serial transcripts written by board/crossbuild/deploy_serial.sh and your own board runs (may hold local paths)
+board/logs/
