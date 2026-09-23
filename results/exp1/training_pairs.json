@@ -1,0 +1,23 @@
+{
+ "pairs": 45983,
+ "files": 114,
+ "by_kind": {
+  "extra": {
+   "files": 14,
+   "pairs": 13996
+  },
+  "musdb": {
+   "files": 75,
+   "pairs": 5400
+  },
+  "pack": {
+   "files": 25,
+   "pairs": 26587
+  }
+ },
+ "validation": {
+  "files": 13,
+  "pairs": 3621
+ },
+ "note": "pack = the four evaluation corpora (always in training; the queries are held out), extra = training-only recordings, musdb = MUSDB18 7 s previews (25 tracks x 3 stems)"
+}

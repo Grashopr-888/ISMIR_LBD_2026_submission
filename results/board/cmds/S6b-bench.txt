@@ -1,0 +1,5 @@
+pgrep -fl "sushi|sensei|guru_mapping" || echo "all stopped"
+RUN:50:taskset -c 1 /udata/elkgranular/bin/elkgrain_bench student /udata/elkgranular/packs/student_mlp_mel80.json 3000
+RUN:50:taskset -c 0 /udata/elkgranular/bin/elkgrain_bench student /udata/elkgranular/packs/student_mlp_mel80.json 3000
+RUN:45:taskset -c 1 /udata/elkgranular/bin/elkgrain_bench match /udata/elkgranular/packs/field.elkgrain 100
+RUN:45:ELKGRANULAR_TABLE=int8 taskset -c 1 /udata/elkgranular/bin/elkgrain_bench match /udata/elkgranular/packs/field.elkgrain 100

@@ -1,0 +1,52 @@
+# Elk Stomp serial transcript — 2026-09-16 18:07:47 — /dev/cu.usbserial-11400
+
+ELKPROMPT$ 
+
+
+===== CMD: pgrep -fl "sushi|sensei|guru_mapping" || echo "all stopped"
+pgrep -fl "sushi|sensei|guru_mapping" || echo "all stopped"
+all stopped
+
+
+===== RUN 50s: taskset -c 1 /udata/elkgranular/bin/elkgrain_bench student /udata/elkgranular/packs/student_mlp_mel80.json 3000
+taskset -c 1 /udata/elkgranular/bin/elkgrain_bench student /udata/elk granular/packs/student_mlp_mel80.json 3000
+BENCH build compiler="13.3.0" neon=1 optimized=1 pointer_bytes=4 clock=CLOCK_MONOTONIC
+BENCH student weights=/udata/elkgranular/packs/student_mlp_mel80.json n=3000 warmup=100 macs_per_call=102400 params=102976 checksum=-622.503
+BENCH student p50_us=812.54 p99_us=945.33 mean_us=822.36 max_us=1063.71 min_us=798.88 bulk_us=823.43 mmac_s=126.0
+ELKPROMPT$ 
+
+--- after SIGINT ---
+^C
+
+
+===== RUN 50s: taskset -c 0 /udata/elkgranular/bin/elkgrain_bench student /udata/elkgranular/packs/student_mlp_mel80.json 3000
+taskset -c 0 /udata/elkgranular/bin/elkgrain_bench student /udata/elk granular/packs/student_mlp_mel80.json 3000
+BENCH build compiler="13.3.0" neon=1 optimized=1 pointer_bytes=4 clock=CLOCK_MONOTONIC
+BENCH student weights=/udata/elkgranular/packs/student_mlp_mel80.json n=3000 warmup=100 macs_per_call=102400 params=102976 checksum=-622.503
+BENCH student p50_us=811.58 p99_us=949.38 mean_us=821.33 max_us=1098.12 min_us=799.71 bulk_us=822.46 mmac_s=126.2
+ELKPROMPT$ 
+
+--- after SIGINT ---
+^C
+
+
+===== RUN 45s: taskset -c 1 /udata/elkgranular/bin/elkgrain_bench match /udata/elkgranular/packs/field.elkgrain 100
+taskset -c 1 /udata/elkgranular/bin/elkgrain_bench match /udata/elkgr anular/packs/field.elkgrain 100
+BENCH build compiler="13.3.0" neon=1 optimized=1 pointer_bytes=4 clock=CLOCK_MONOTONIC
+BENCH match pack=/udata/elkgranular/packs/field.elkgrain grains=12018 dim=64 table=f32 table_mb=3.077 open_ms=1198.9 n=100 tau=0.050 warmup=20 checksum=738997
+BENCH match p50_us=12497.2 p99_us=12686.1 mean_us=12500.7 max_us=12714.2 min_us=12357.0 bulk_us=12504.7 ms_per_1000_grains=1.0399
+ELKPROMPT$ 
+
+--- after SIGINT ---
+^C
+
+
+===== RUN 45s: ELKGRANULAR_TABLE=int8 taskset -c 1 /udata/elkgranular/bin/elkgrain_bench match /udata/elkgranular/packs/field.elkgrain 100
+ELKGRANULAR_TABLE=int8 taskset -c 1 /udata/elkgranular/bin/elkgrain_b ench match /udata/elkgranular/packs/field.elkgrain 100
+BENCH build compiler="13.3.0" neon=1 optimized=1 pointer_bytes=4 clock=CLOCK_MONOTONIC
+BENCH match pack=/udata/elkgranular/packs/field.elkgrain grains=12018 dim=64 table=int8 table_mb=0.817 open_ms=1198.6 n=100 tau=0.050 warmup=20 checksum=738998
+BENCH match p50_us=4453.8 p99_us=4638.9 mean_us=4468.2 max_us=4645.2 min_us=4305.2 bulk_us=4471.4 ms_per_1000_grains=0.3706
+ELKPROMPT$ 
+
+--- after SIGINT ---
+^C

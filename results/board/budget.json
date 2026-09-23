@@ -1,0 +1,100 @@
+{
+  "_readme": "Per-hop worker cost on the Elk Stomp (one Cortex-A7 core), p50 per stage, resampler-fixed build (16/17 Sep 2026). Every corpus carries a 'measured' block (drawn without hatching; the int8 search carries a dotted pattern); 'measured_prefix_build' keeps the first-session values for the record. 'stages' holds fitted coefficients for other corpus sizes (hatched if used). Edit values only from logs; re-run fig1_budget.py.",
+  "hop_ms": 93.3,
+  "hop_lines_ms": [
+    93.3,
+    46.7,
+    23.3
+  ],
+  "corpora": [
+    {
+      "name": "gonza",
+      "grains": 1107,
+      "minutes": 1.7,
+      "on_board": true,
+      "measured": {
+        "frontend_ms": 3.963,
+        "student_ms": 0.96,
+        "match_f32_ms": 1.292,
+        "match_int8_ms": 0.419,
+        "source": "exp/board-session-2026-09-16/raw/R1-gonza-f32.txt (run 20250529-233122) and R1-gonza-int8.txt (-234819), STAGES p50, resampler-fixed build"
+      },
+      "measured_prefix_build": {
+        "frontend_ms": 16.726,
+        "student_ms": 0.901,
+        "match_f32_ms": 1.263,
+        "match_int8_ms": 0.42
+      }
+    },
+    {
+      "name": "perc",
+      "grains": 5115,
+      "minutes": 9.5,
+      "on_board": true,
+      "measured": {
+        "frontend_ms": 3.946,
+        "student_ms": 0.957,
+        "match_f32_ms": 5.536,
+        "match_int8_ms": 2.141,
+        "source": "exp/board-session-2026-09-16/raw/R1b-perc-f32.txt (run 20250529-185624) and R1b-perc-int8.txt (-190203), STAGES p50, resampler-fixed build"
+      },
+      "measured_prefix_build": null
+    },
+    {
+      "name": "field",
+      "grains": 12018,
+      "minutes": 18.6,
+      "on_board": true,
+      "measured": {
+        "frontend_ms": 3.961,
+        "student_ms": 0.909,
+        "match_f32_ms": 12.726,
+        "match_int8_ms": 4.791,
+        "source": "exp/board-session-2026-09-16/raw/R1-field-f32.txt (run 20250529-234240) and R1-field-int8.txt (-235538), STAGES p50, resampler-fixed build"
+      },
+      "measured_prefix_build": {
+        "frontend_ms": 16.687,
+        "student_ms": 0.905,
+        "match_f32_ms": 12.698,
+        "match_int8_ms": 4.784
+      }
+    }
+  ],
+  "stages": {
+    "frontend_ms": {
+      "value": 3.96,
+      "status": "measured",
+      "gap": "E2b",
+      "source": "STAGES fe_p50 3.929–3.982 over six fixed-build runs (exp/board-session-2026-09-16/README.md, R1); pre-fix build 16.7"
+    },
+    "student_ms": {
+      "value": 0.94,
+      "status": "measured",
+      "gap": "E3",
+      "source": "STAGES st_p50 0.908–0.960 (R1 runs); bench p50 0.8125 ms in isolation (raw/S6b-bench.txt)"
+    },
+    "match_f32_ms_per_1000_grains": {
+      "value": 1.047,
+      "status": "measured",
+      "gap": "E2b",
+      "source": "least-squares slope of se_p50 over 1,107 / 5,115 / 12,018 grains (R1, R1b)"
+    },
+    "match_int8_ms_per_1000_grains": {
+      "value": 0.399,
+      "status": "measured",
+      "gap": "D1",
+      "source": "least-squares slope of int8 se_p50 over the same three worlds (R1, R1b)"
+    }
+  },
+  "measured_reference": {
+    "cadence_p50_ms": 93.3,
+    "cadence_p99_ms": 94.9,
+    "cadence_max_ms": 124,
+    "overruns": 0,
+    "source": "board run, field world, 8 s bars, transcript 27 (01_project-context.md §4); 16 Sep runs: gonza p50 93.362 / p99 94.937 / max 139.6, field p50 93.328 / p99 94.955 / max 127.0 (exp/board-session-2026-09-16/README.md); fixed build: gonza 93.325/94.774/133.4, perc 93.373/94.920/137.6, field 93.324/94.945/126.6 (R1, R1b)",
+    "burst_before_per_hop_matching_p99_ms": 340,
+    "burst_before_max_ms": 505,
+    "_note": "cadence_* keys are the 3 Sep run (transcript 27), kept for history; the paper quotes the fixed-build run 20250529-234240 (see source)"
+  },
+  "ylim_ms": 52
+}

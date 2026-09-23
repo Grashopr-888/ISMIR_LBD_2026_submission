@@ -1,0 +1,98 @@
+{
+ "corpora": {
+  "field": {
+   "grains": 12018,
+   "files": 9,
+   "minutes": 18.63,
+   "dropped_silent": 9
+  },
+  "perc": {
+   "grains": 5115,
+   "files": 6,
+   "minutes": 9.49,
+   "dropped_silent": 1011
+  },
+  "text": {
+   "grains": 4554,
+   "files": 5,
+   "minutes": 10.78,
+   "dropped_silent": 2408
+  },
+  "tonal": {
+   "grains": 4900,
+   "files": 5,
+   "minutes": 9.5,
+   "dropped_silent": 1232
+  }
+ },
+ "queries": [
+  {
+   "id": "qp1",
+   "character": "perc",
+   "frames": 85
+  },
+  {
+   "id": "qp2",
+   "character": "perc",
+   "frames": 85
+  },
+  {
+   "id": "qp3",
+   "character": "perc",
+   "frames": 85
+  },
+  {
+   "id": "qp4",
+   "character": "perc",
+   "frames": 85
+  },
+  {
+   "id": "qt1",
+   "character": "tonal",
+   "frames": 85
+  },
+  {
+   "id": "qt2",
+   "character": "tonal",
+   "frames": 85
+  },
+  {
+   "id": "qt3",
+   "character": "tonal",
+   "frames": 85
+  },
+  {
+   "id": "qt4",
+   "character": "tonal",
+   "frames": 85
+  },
+  {
+   "id": "qx1",
+   "character": "text",
+   "frames": 85
+  },
+  {
+   "id": "qx2",
+   "character": "text",
+   "frames": 85
+  },
+  {
+   "id": "qx3",
+   "character": "text",
+   "frames": 85
+  },
+  {
+   "id": "qx4",
+   "character": "text",
+   "frames": 85
+  }
+ ],
+ "tau_live": 0.05,
+ "tau_sweep": [
+  0.0,
+  0.03,
+  0.05,
+  0.15
+ ],
+ "seed": 0
+}

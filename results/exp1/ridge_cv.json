@@ -1,0 +1,27 @@
+{
+ "field": {
+  "cv_centred_cos": 0.6036,
+  "lam": 10.0,
+  "n": 12018
+ },
+ "perc": {
+  "cv_centred_cos": 0.5018,
+  "lam": 100.0,
+  "n": 5115
+ },
+ "pooled": {
+  "cv_centred_cos": 0.6244,
+  "lam": 100.0,
+  "n": 26587
+ },
+ "text": {
+  "cv_centred_cos": 0.4356,
+  "lam": 10.0,
+  "n": 4554
+ },
+ "tonal": {
+  "cv_centred_cos": 0.3979,
+  "lam": 0.01,
+  "n": 4900
+ }
+}

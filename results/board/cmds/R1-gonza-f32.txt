@@ -1,0 +1,6 @@
+pgrep -fl "sushi|sensei|guru_mapping" || echo "all stopped"
+RUN:330:EVLSTATS=1 ELKGRANULAR_PACK=/udata/elkgranular/packs/gonza.elkgrain /udata/elkgranular/run_board.sh --timing-statistics
+R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; echo "stamp=$ST"; grep -E "^# |SUMMARY|STAGES|table=|^world" /udata/elkgranular/logs/worker-$ST.log /dev/null | cut -c1-400
+R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; grep -cE "\[error\]|\[critical\]" /udata/elkgranular/logs/sushi-$ST.log /dev/null; grep -E "Elk Processor Extension|xrun|Processor: [0-9]+ \(granular\)" /udata/elkgranular/logs/sushi-$ST.log /dev/null | tail -n 6
+R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; cat /udata/elkgranular/logs/timings-$ST.txt /dev/null
+R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; cat /udata/elkgranular/logs/evl-$ST-t025.log /udata/elkgranular/logs/evl-$ST-end.log /dev/null | head -n 30

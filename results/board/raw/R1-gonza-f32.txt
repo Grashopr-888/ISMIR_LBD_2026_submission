@@ -1,0 +1,140 @@
+# Elk Stomp serial transcript — 2026-09-16 19:53:31 — /dev/cu.usbserial-11400
+
+ELKPROMPT$ 
+
+
+===== CMD: pgrep -fl "sushi|sensei|guru_mapping" || echo "all stopped"
+pgrep -fl "sushi|sensei|guru_mapping" || echo "all stopped"
+all stopped
+
+
+===== RUN 330s: EVLSTATS=1 ELKGRANULAR_PACK=/udata/elkgranular/packs/gonza.elkgrain /udata/elkgranular/run_board.sh --timing-statistics
+EVLSTATS=1 ELKGRANULAR_PACK=/udata/elkgranular/packs/gonza.elkgrain / udata/elkgranular/run_board.sh --timing-statistics
+pack=/udata/elkgranular/packs/gonza.elkgrain  config=/udata/elkgranular/config/sushi_config_stomp.json  logs=/tmp/elkgranular-run-20250529-233122 -> /udata/elkgranular/logs on exit
+starting sensei
+starting sushi
+[16987.197253] audio_evl: Cortex M system info written
+[16987.227279] audio_evl: Input channel 0 info:
+[16987.227279]  sw_ch_id=0
+[16987.227279]  hw_ch_id=0
+[16987.227279]  direction=0
+[16987.227279]  sample_format=1
+[16987.227279]  channel_name=In-L
+[16987.227279]  start_offset_in_words=0
+[16987.227279]  stride_in_words=4
+[16987.277257] audio_evl: Input channel 1 info:
+[16987.277257]  sw_ch_id=1
+[16987.277257]  hw_ch_id=1
+[16987.277257]  direction=0
+[16987.277257]  sample_format=1
+[16987.277257]  channel_name=In-R
+[16987.277257]  start_offset_in_words=1
+[16987.277257]  stride_in_words=4
+[16987.327257] audio_evl: Input channel 2 info:
+[16987.327257]  sw_ch_id=2
+[16987.327257]  hw_ch_id=2
+[16987.327257]  direction=0
+[16987.327257]  sample_format=1
+[16987.327257]  channel_name=In-R
+[16987.327257]  start_offset_in_words=2
+[16987.327257]  stride_in_words=4
+[16987.377282] audio_evl: Input channel 3 info:
+[16987.377282]  sw_ch_id=3
+[16987.377282]  hw_ch_id=3
+[16987.377282]  direction=0
+[16987.377282]  sample_format=1
+[16987.377282]  channel_name=In-R
+[16987.377282]  start_offset_in_words=3
+[16987.377282]  stride_in_words=4
+[16987.427301] audio_evl: Output channel 0 info:
+[16987.427301]  sw_ch_id=0
+[16987.427301]  hw_ch_id=0
+[16987.427301]  direction=1
+[16987.427301]  sample_format=1
+[16987.427301]  channel_name=Out-L
+[16987.427301]  start_offset_in_words=0
+[16987.427301]  stride_in_words=4
+[16987.477262] audio_evl: Output channel 1 info:
+[16987.477262]  sw_ch_id=1
+[16987.477262]  hw_ch_id=1
+[16987.477262]  direction=1
+[16987.477262]  sample_format=1
+[16987.477262]  channel_name=Out-R
+[16987.477262]  start_offset_in_words=1
+[16987.477262]  stride_in_words=4
+[16987.527259] audio_evl: Output channel 2 info:
+[16987.527259]  sw_ch_id=2
+[16987.527259]  hw_ch_id=2
+[16987.527259]  direction=1
+[16987.527259]  sample_format=1
+[16987.527259]  channel_name=Out-R
+[16987.527259]  start_offset_in_words=2
+[16987.527259]  stride_in_words=4
+[16987.577256] audio_evl: Output channel 3 info:
+[16987.577256]  sw_ch_id=3
+[16987.577256]  hw_ch_id=3
+[16987.577256]  direction=1
+[16987.577256]  sample_format=1
+[16987.577256]  channel_name=Out-R
+[16987.577256]  start_offset_in_words=3
+[16987.577256]  stride_in_words=4
+[16987.600311] audio_evl: Audio channel info read from microcontroller
+ElkGranular: pack /udata/elkgranular/packs/gonza.elkgrain (1107 grains, unit=1, hop48=4462, margin48=480)
+ElkGranular: 5 world(s), current [1]
+SUSHI - Copyright 2017-2023 Elk Audio AB, Stockholm
+SUSHI is licensed under the Affero GPL 3.0. Source code is available at github.com/elk-audio
+[16989.242323] audio_evl: AUDIO_PROC_START cpu_num: 1
+starting glue (guru_mapping.py)
+running — Ctrl-C to stop everything; tail -f /tmp/elkgranular-run-20250529-233122/worker-20250529-233122.log for bars/picks
+
+--- after SIGINT ---
+^CSIGINT -> all
+[17314.582907] audio_evl: ping=122002 pong=122002
+[17314.586319] audio_evl: dev closed
+
+
+===== CMD: R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; echo "stamp=$ST"; grep -E "^# |SUMMARY|STAGES|table=|^world" /udata/elkgranular/logs/worker-$ST.log /dev/null | cut -c1-400
+R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; echo "stamp=$ST"; grep -E "^# |SUMMARY|STAGES|talogs copied to /udata/elkgranular/logs
+ble= R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranulaar-run-}; echo "stamp=$ST"; grep -E "^# |SUMMARY|STAGES|table=|^world" /udata/el kgranular/logs/worker-$ST.log /dev/null | cut -c1-400
+stamp=20250529-233122
+/udata/elkgranular/logs/worker-20250529-233122.log:# elkgranular T09 worker  mode=elkasync hop=4480 sr=48000 target_ms=93.333 bar_hops=21 pack=/udata/elkgranular/packs/gonza.elkgrain grains=1107 student=1 ridge=1 table=f32 table_bytes=283392
+/udata/elkgranular/logs/worker-20250529-233122.log:# worlds: 5 [0]/udata/elkgranular/packs/field.elkgrain [1]/udata/elkgranular/packs/gonza.elkgrain* [2]/udata/elkgranular/packs/drums.elkgrain [3]/udata/elkgranular/packs/vocals.elkgrain [4]/udata/elkgranular/packs/texture.elkgrain
+/udata/elkgranular/logs/worker-20250529-233122.log:SUMMARY mode=elkasync hops=3485 bars=165 target_ms=93.333 p50=93.325 p90=94.143 p99=94.774 min=53.104 max=133.446 ring_overruns=0 ring_stalls=0 cmd_drops=0 async_done=3486 async_req_failed=0
+/udata/elkgranular/logs/worker-20250529-233122.log:STAGES grains=1107 n_hops=3485 n_open=3485 n_bars=165 fe_p50=3.963 fe_p99=5.009 fe_max=8.090 st_p50=0.960 st_p99=1.412 st_max=2.640 se_p50=1.292 se_p99=1.879 se_max=2.892 wk_p50=6.126 wk_p99=8.084 wk_max=12.693 sc_p50=0.155 sc_p99=0.427 sc_max=0.559 unit=ms
+
+
+===== CMD: R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; grep -cE "\[error\]|\[critical\]" /udata/elkgranular/logs/sushi-$ST.log /dev/null; grep -E "Elk Processor Extension|xrun|Processor: [0-9]+ \(granular\)" /udata/elkgranular/logs/sushi-$ST.log /dev/null | tail -n 6
+R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranul ar-run-}; grep -cE "\[error\]|\[critical\]" /udata/elkgranular/logs/sushi-$ST.lo g /dev/null; grep -E "Elk Processor Extension|xrun|Processor: [0-9]+ \(granular\ )" /udata/elkgranular/logs/sushi-$ST.log /dev/null | tail -n 6
+/udata/elkgranular/logs/sushi-20250529-233122.log:0
+/dev/null:0
+/udata/elkgranular/logs/sushi-20250529-233122.log:[2025-05-29 23:35:26.309] [info] [engine] Processor: 2 (granular), avg: 2.0903838%, min: 1.228125%, max: 10.096875%
+/udata/elkgranular/logs/sushi-20250529-233122.log:[2025-05-29 23:35:42.322] [info] [engine] Processor: 2 (granular), avg: 2.0583045%, min: 1.228125%, max: 10.096875%
+/udata/elkgranular/logs/sushi-20250529-233122.log:[2025-05-29 23:35:58.371] [info] [engine] Processor: 2 (granular), avg: 2.0845237%, min: 1.228125%, max: 10.096875%
+/udata/elkgranular/logs/sushi-20250529-233122.log:[2025-05-29 23:36:14.382] [info] [engine] Processor: 2 (granular), avg: 2.0627413%, min: 1.228125%, max: 10.096875%
+/udata/elkgranular/logs/sushi-20250529-233122.log:[2025-05-29 23:36:30.395] [info] [engine] Processor: 2 (granular), avg: 2.0696487%, min: 1.228125%, max: 10.096875%
+/udata/elkgranular/logs/sushi-20250529-233122.log:[2025-05-29 23:36:46.413] [info] [engine] Processor: 2 (granular), avg: 2.081382%, min: 1.228125%, max: 10.096875%
+
+
+===== CMD: R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; cat /udata/elkgranular/logs/timings-$ST.txt /dev/null
+R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranul ar-run-}; cat /udata/elkgranular/logs/timings-$ST.txt /dev/null
+Performance timings for all processors in percentages of audio buffer (100% = 1333.33us)
+
+                        average(%)      minimum(%)      maximum(%)      
+Track: GRANULAR_TRACK
+        source          0.88459         0.7344          2.57505         
+        granular        2.09369         1.22812         10.0969         
+        Track total     3.36507         2.2875          13.0719         
+
+Engine total            4.03407         2.76255         14.8031
+
+
+===== CMD: R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranular-run-}; cat /udata/elkgranular/logs/evl-$ST-t025.log /udata/elkgranular/logs/evl-$ST-end.log /dev/null | head -n 30
+R=$(ls -td /tmp/elkgranular-run-* | head -n 1); ST=${R#/tmp/elkgranul ar-run-}; cat /udata/elkgranular/logs/evl-$ST-t025.log /udata/elkgranular/logs/e vl-$ST-end.log /dev/null | head -n 30
+CPU   PID   ISW     CTXSW     SYS       RWA       STAT     NAME
+  1   1189  0       19055     38109     0          W       raspa_pimpl_task:1161
+CPU   PID   TIMEOUT      %CPU      CPUTIME       NAME
+  1   1189     -          16.9      3:279.982    raspa_pimpl_task:1161
+CPU   PID   ISW     CTXSW     SYS       RWA       STAT     NAME
+  1   1189  0       243984    487967    1          W       raspa_pimpl_task:1161
+CPU   PID   TIMEOUT      %CPU      CPUTIME       NAME
+  1   1189     -           6.7     39:149.619    raspa_pimpl_task:1161
