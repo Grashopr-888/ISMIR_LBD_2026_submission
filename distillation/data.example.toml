@@ -1,0 +1,42 @@
+# Experiment 1 data designation (copy to distillation/data.toml, or point $LBD_DATA_CONFIG at your copy).
+# Paths are relative to data_root (itself relative to this file, or absolute). ~ and $VARS expand.
+# The paper used the author's own recordings: three character corpora of 9.5-10.8 minutes
+# (6, 5 and 5 files), 12 held-out 8 s queries (4 per character), 14 training-only extra stems,
+# and 75 MUSDB18 7 s preview stems (25 tracks x drums/other/vocals). Neither the recordings nor
+# MUSDB18 are redistributed here: substitute your own audio.
+
+data_root = "~/audio"
+query_seconds = 8.0
+# top-level keys must come before the first [table] header (TOML)
+train_extra = ["guitar/jam.wav", "bass/bass.wav", "synth/arp.wav"]
+
+[packs]
+perc  = ["drums/kit_a.wav", "drums/kit_b.wav", "perc/shakers.wav"]
+tonal = ["keys/epiano.wav", "vocals/vox.wav", "strings/strings.wav"]
+text  = ["pad/drone.wav", "texture/atmosphere.wav", "texture/glitch.wav"]
+
+# Optional: an existing .elkgrain pack evaluated as a fourth, metrics-only corpus.
+# corpus_dir is the folder it was built from (its file names are recorded in the pack).
+# [field]
+# pack = "packs/field.elkgrain"
+# corpus_dir = "field"
+
+[[queries]]
+id = "qp1"
+file = "drums/held_out_kit.wav"
+character = "perc"
+
+[[queries]]
+id = "qt1"
+file = "keys/held_out_rhodes.wav"
+character = "tonal"
+
+[[queries]]
+id = "qx1"
+file = "pad/held_out_drone.wav"
+character = "text"
+
+# Optional: MUSDB18 7 s previews (.stem.mp4, decoded with ffmpeg), training only.
+# [musdb]
+# dir = "MUSDB18-7"
+# n_tracks = 25
