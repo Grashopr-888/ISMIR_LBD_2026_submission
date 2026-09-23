@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this code or the weights, please cite the late-breaking demo."
+title: "Code, logs and notebooks for: Neural Codec Latent Distillation for Corpus Retrieval Synthesis on the Elk Stomp"
+type: software
+authors:
+  - family-names: Eriksen
+    given-names: Trent
+    affiliation: "Leiden University, Media Technology"
+license: MIT
+repository-code: "https://github.com/Grashopr-888/ISMIR_LBD_2026_submission"
+date-released: 2026-09-24
+version: 1.0.0
+preferred-citation:
+  type: conference-paper
+  title: "Neural Codec Latent Distillation for Corpus Retrieval Synthesis on the Elk Stomp"
+  authors:
+    - family-names: Eriksen
+      given-names: Trent
+      affiliation: "Leiden University, Media Technology"
+  collection-title: "Extended Abstracts for the Late-Breaking Demo Session of the 27th International Society for Music Information Retrieval Conference (ISMIR 2026)"
+  conference:
+    name: "ISMIR 2026"
+    city: "Abu Dhabi"
+    date-start: 2026-11-08
+    date-end: 2026-11-12
+  year: 2026
