@@ -19,8 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-The MIT licence covers the code and documentation written by the author. It does not cover:
-  - weights/ (the trained student networks and ridge map): CC BY-NC 4.0, see weights/README.md;
-  - the third-party software the code downloads or links (music2latent and its weights, JUCE, RTNeural,
-    Elk's plugin extension header, Python packages): see THIRD_PARTY.md.

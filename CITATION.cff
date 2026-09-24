@@ -5,18 +5,24 @@ type: software
 authors:
   - family-names: Eriksen
     given-names: Trent
-    affiliation: "Leiden University, Media Technology"
+    affiliation: "Independent researcher"
 license: MIT
 repository-code: "https://github.com/Grashopr-888/ISMIR_LBD_2026_submission"
 date-released: 2026-09-24
-version: 1.0.0
+version: 1.1.0
 preferred-citation:
   type: conference-paper
   title: "Neural Codec Latent Distillation for Corpus Retrieval Synthesis on the Elk Stomp"
   authors:
     - family-names: Eriksen
       given-names: Trent
-      affiliation: "Leiden University, Media Technology"
+      affiliation: "Independent researcher"
+    - family-names: Segovia
+      given-names: Jazz
+      affiliation: "Independent researcher"
+    - family-names: Blackett
+      given-names: Dennison
+      affiliation: "Independent researcher"
   collection-title: "Extended Abstracts for the Late-Breaking Demo Session of the 27th International Society for Music Information Retrieval Conference (ISMIR 2026)"
   conference:
     name: "ISMIR 2026"
