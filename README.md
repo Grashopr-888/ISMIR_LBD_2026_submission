@@ -15,7 +15,7 @@ paper's numbers from the data that can be shared, and rebuild the board plugin.
 
 ## Paper and supplementary material
 
-- **Paper**, as submitted to the ISMIR 2026 late-breaking demo session on 24 Sep 2026:
+- **Paper**, the camera-ready version for the ISMIR 2026 late-breaking demo session (paper 679, 16 Oct 2026):
   [`paper/Neural_Codec_Latent_Distillation_for_Corpus_Retrieval_Synthesis_on_the_Elk_Stomp.pdf`](paper/Neural_Codec_Latent_Distillation_for_Corpus_Retrieval_Synthesis_on_the_Elk_Stomp.pdf)
 - **Demo video** (the paper's footnote 3): https://youtu.be/gLobf3o0Qg0
 - **Music Hackspace × MUTEK Montréal hackathon, winners' showcase**, where the instrument's desktop version was
@@ -26,7 +26,7 @@ paper's numbers from the data that can be shared, and rebuild the board plugin.
 
 | Path | What |
 |---|---|
-| `paper/` | the paper as submitted (PDF, CC BY 4.0) |
+| `paper/` | the camera-ready paper (PDF, CC BY 4.0) |
 | `latent/granular.py` | the desktop instrument's core: music2latent encoding, grains, the matching table, selection by a softmax over mean-centred cosine similarities with temperature τ (with anti-repetition and continuity penalties), decoding |
 | `corpus_builder/` | the offline pack builder (`build_corpus.py`), the `.elkgrain` format (`elkgrain.py`, specified in `docs/pack-format.md`), selection over a pack (`match.py`, identical selections to `granular.substitute`), tests |
 | `distillation/` | Experiment 1: corpora, queries, mel–latent pairs, the student (MLP, GRU), the ridge maps, the metrics, the 8-bit table study (see its README) |

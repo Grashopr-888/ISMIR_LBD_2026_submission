@@ -8,11 +8,12 @@ authors:
     affiliation: "Independent researcher"
 license: MIT
 repository-code: "https://github.com/Grashopr-888/ISMIR_LBD_2026_submission"
-date-released: 2026-09-24
-version: 1.1.0
+date-released: 2026-10-17
+version: 1.2.0
 preferred-citation:
   type: conference-paper
   title: "Neural Codec Latent Distillation for Corpus Retrieval Synthesis on the Elk Stomp"
+  url: "https://github.com/Grashopr-888/ISMIR_LBD_2026_submission/blob/main/paper/Neural_Codec_Latent_Distillation_for_Corpus_Retrieval_Synthesis_on_the_Elk_Stomp.pdf"
   authors:
     - family-names: Eriksen
       given-names: Trent
