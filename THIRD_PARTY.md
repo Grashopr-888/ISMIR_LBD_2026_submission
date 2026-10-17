@@ -48,4 +48,16 @@ commercial, royalty-free use, which the MIT licence meets. This repository distr
 | The author's recordings (the corpora, the 12 queries, the training extras) | audio. The rights of some field recordings are unconfirmed |
 | [MUSDB18](https://sigsep.github.io/datasets/musdb.html) 7 s preview stems (75 stems, training only) | MUSDB18's terms (research, non-commercial). They are part of the students' training data, which is one reason `weights/` is CC BY-NC 4.0 |
 | `.elkgrain` packs, corpus latent tables, query latents | packs contain audio, and music2latent latents can be decoded back to audio (an audio derivative) |
-| Elk Audio's render of the board (Figure 1, panel C) | third-party image. `figures/fig_system.tex` draws a labelled frame instead unless you supply the file |
+| Elk Audio's render of the board as a separate file (Figure 1, panel C) | third-party image. `figures/fig_system.tex` draws a labelled frame instead unless you supply the file |
+
+## Third-party images inside the paper, the poster and the thumbnail
+
+| Image | Where | Credit and terms |
+|---|---|---|
+| Elk Audio's render of the Elk Stomp Dev Kit | `paper/` (Figure 1, panel C), `docs/poster/679_poster.pdf`, `docs/images/thumbnail.png`, `docs/images/poster.jpg` | © Elk Audio AB, credited "Image: Elk Audio" in the paper and on the poster. Not covered by this repository's licences |
+| ISMIR 2026 logo | the poster and the thumbnail | the conference's logo, used to mark the venue. Not covered by this repository's licences |
+| Elk logo | the poster and the thumbnail | © Elk Audio AB, used to name the hardware. Not covered by this repository's licences |
+
+Everything else in `docs/images/` is the authors' own: the figures are drawn from `results/` (the same numbers as the
+paper's Table 1 and Figure 2), and `desktop_instrument.jpg` is a screenshot of the desktop instrument.
+
