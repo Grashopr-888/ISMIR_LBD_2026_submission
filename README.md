@@ -1,26 +1,74 @@
 # Neural Codec Latent Distillation for Corpus Retrieval Synthesis on the Elk Stomp
 
-Code, measurements and notebooks for the ISMIR 2026 late-breaking demo by Trent Eriksen, Jazz Segovia and Dennison
-Blackett (independent researchers).
+**Trent Eriksen, Jazz Segovia, Dennison Blackett** · Independent Researchers<br>
+Late-Breaking/Demo session, ISMIR 2026, Abu Dhabi · paper 679
 
-Latent granular resynthesis encodes a corpus and an input with a neural audio codec, replaces each input frame with a
-similar corpus frame and decodes the result. The Elk Stomp Dev Kit, without a neural processing unit, cannot run the
-codec used here, music2latent, so it plays stored audio grains instead. The paper asks whether a small query encoder
-distilled from music2latent selects grains as that encoder would, and what then limits real-time operation.
-Experiment 1 compares five query encoders offline on held-out input (Table 1). Experiment 2 times each analysis stage
-on the Elk Stomp (Figure 2).
+[![Paper](https://img.shields.io/badge/paper-PDF-B07000)](paper/Neural_Codec_Latent_Distillation_for_Corpus_Retrieval_Synthesis_on_the_Elk_Stomp.pdf)
+[![Video](https://img.shields.io/badge/video-YouTube-c4302b)](https://youtu.be/P9qW92YsQns)
+[![Poster](https://img.shields.io/badge/poster-A0%20PDF-454955)](docs/poster/679_poster.pdf)
+[![Code licence](https://img.shields.io/badge/code-MIT-22262E)](LICENSE)
+[![Weights licence](https://img.shields.io/badge/weights-CC%20BY--NC%204.0-7F8592)](weights/README.md)
 
-This repository lets you read the code behind each result, run notebooks that show each step and reproduce the
-paper's numbers from the data that can be shared, and rebuild the board plugin.
+<p align="center">
+  <a href="https://youtu.be/P9qW92YsQns"><img src="docs/images/thumbnail.png" width="760"
+     alt="Title card: Neural Codec Latent Distillation for Corpus Retrieval Synthesis on the Elk Stomp, with Elk Audio's render of the Elk Stomp Dev Kit"></a>
+  <br><sub><a href="https://youtu.be/P9qW92YsQns">Watch the video walkthrough of the paper (4:37)</a></sub>
+</p>
+
+## Abstract
+
+Latent granular resynthesis encodes a corpus and an input with a neural audio codec and replaces each input frame with
+a similar corpus frame. The Elk Stomp Dev Kit, a device without a neural processing unit, cannot run codecs like
+music2latent that are often utilized for this type of synthesis. We ask whether a small query encoder, distilled from
+music2latent selects grains as that encoder would, and what limits real-time operation. A distilled multilayer
+perceptron of 103k parameters is compared offline on input with four other query encoders with each analysis stage
+timed on the Elk. Results indicate it preserves the encoder's similarity ordering better than a linear map and MFCCs
+(Spearman ρ .83 against .80 and .58), with selections on average in the encoder's top 4–7 %. On the Elk it takes about
+1 % of the 93 ms analysis period, and only the search grows with corpus size.
+
+## The system
+
+<p align="center"><img src="docs/images/fig_system.png" width="620"
+  alt="System diagram. Offline, on an M1 Max laptop: the author's recordings are encoded by the music2latent encoder (the teacher) into a pack of grains and a latent table, and mel-latent pairs train the distilled student. On the Elk Stomp: an audio callback every 64 samples mixes the grains, while a worker thread every 4,480 samples runs the log-mel front-end, the student, a cosine search over every grain and schedules grains for the following bar."></p>
+
+Offline, a student network is distilled from the music2latent encoder, which encodes the corpus. On the Elk Stomp the
+student replaces the encoder for the live input, and stored 16-bit grains joined with 10 ms crossfades replace the
+decoder. The student is a multilayer perceptron of 103 k parameters, run in C++ through RTNeural.
+
+## Results
+
+| Retrieval fidelity (H1), offline | On-device cost (H2), on the Elk Stomp |
+|---|---|
+| <img src="docs/images/fig_retrieval.png" alt="Spearman rho and percentile rank for five query encoders: student .829 and .945, GRU-128 .826 and .945, ridge map .797 and .933, MFCC cosine .575 and .835, teacher with a second seed 1 by construction and .981."> | <img src="docs/images/fig_budget.png" alt="Median time per analysis on the Elk Stomp for corpora of 1,107, 5,115 and 12,018 grains: 6.2, 10.4 and 17.6 ms with the 32-bit table, 5.3, 7.0 and 9.7 ms with the 8-bit table, against a 93.3 ms analysis period."> |
+| **Spearman ρ**: how closely an encoder ranks all grains in the teacher's order (1 = the same order). **Percentile rank**: where the grain it picks sits in the teacher's ranking (.95 = the teacher's top 5 %). 12 held-out queries on four corpora (percussive, tonal, textural, field recordings), 48 pairs. | Median time per analysis. The student takes about 1 % of the 93.3 ms period. The search grows with the corpus and is the largest cost from 5,115 grains on. An 8-bit latent table makes it 2.6 to 3.1 times faster with the same ordering. No run lost input. |
+
+## Where it started
+
+<p align="center"><img src="docs/images/desktop_instrument.jpg" width="760"
+  alt="The desktop instrument's stage view: two voices A and B with corpus selectors and controls on the sides, and a point cloud of the corpus latents in the middle."></p>
+
+The study began as a desktop instrument for latent granular resynthesis, built on an M1 Max laptop for the
+[Music Hackspace × MUTEK Montréal hackathon](https://forum.mutek.org/en/shows/2026/music-hackspace-x-mutek-hackathon-winners-showcase) (22–23 Aug 2026) and shown at its winners' showcase.
+Its original demo video: https://youtu.be/gLobf3o0Qg0
+
+## Poster
+
+<p align="center"><a href="docs/poster/679_poster.pdf"><img src="docs/images/poster.jpg" width="900"
+  alt="The A0 poster: research question and hypotheses, introduction, method, retrieval fidelity (H1), on-device cost (H2), takeaway, limitations and future directions."></a></p>
 
 ## Paper and supplementary material
 
-- **Paper**, the camera-ready version for the ISMIR 2026 late-breaking demo session (paper 679, 16 Oct 2026):
-  [`paper/Neural_Codec_Latent_Distillation_for_Corpus_Retrieval_Synthesis_on_the_Elk_Stomp.pdf`](paper/Neural_Codec_Latent_Distillation_for_Corpus_Retrieval_Synthesis_on_the_Elk_Stomp.pdf)
-- **Demo video** (the paper's footnote 3): https://youtu.be/gLobf3o0Qg0
-- **Music Hackspace × MUTEK Montréal hackathon, winners' showcase**, where the instrument's desktop version was
-  presented (the paper's footnote 1):
-  https://forum.mutek.org/en/shows/2026/music-hackspace-x-mutek-hackathon-winners-showcase
+- **Paper**, camera-ready (paper 679, 16 Oct 2026, CC BY 4.0): [`paper/Neural_Codec_Latent_Distillation_for_Corpus_Retrieval_Synthesis_on_the_Elk_Stomp.pdf`](paper/Neural_Codec_Latent_Distillation_for_Corpus_Retrieval_Synthesis_on_the_Elk_Stomp.pdf)
+- **Video walkthrough** of the paper (camera-ready video, 4:37): https://youtu.be/P9qW92YsQns
+- **Poster** (A0 landscape): [`docs/poster/679_poster.pdf`](docs/poster/679_poster.pdf)
+- **Original demo video** of the desktop instrument (the paper's footnote 3): https://youtu.be/gLobf3o0Qg0
+- **Music Hackspace × MUTEK Montréal hackathon, winners' showcase**, where the desktop instrument was presented (the
+  paper's footnote 1): https://forum.mutek.org/en/shows/2026/music-hackspace-x-mutek-hackathon-winners-showcase
+
+## About this repository
+
+This repository lets you read the code behind each result, run notebooks that show each step and reproduce the
+paper's numbers from the data that can be shared, and rebuild the board plugin.
 
 ## Contents
 
@@ -37,6 +85,7 @@ paper's numbers from the data that can be shared, and rebuild the board plugin.
 | `analysis/` | transcript parser, Table 1 builder, the generated demo signal, notebook helpers |
 | `notebooks/` | five notebooks, committed with their outputs, each ending with a table of the paper's numbers it reproduces |
 | `figures/` | Figure 1 (TikZ) and Figure 2 (matplotlib, drawn from the transcripts) |
+| `docs/` | the pack format (`pack-format.md`), the poster (`poster/679_poster.pdf`) and the images on this page (`images/`) |
 
 ## Quick start
 
@@ -127,7 +176,8 @@ CMake fetches JUCE 8.0.8, RTNeural at `95c3c0f` and Elk's plugin-extension heade
 - **Packs and corpus latent tables**: packs contain audio, and music2latent latents decode back to audio.
 - **music2latent's weights**: CC BY-NC 4.0, downloaded by the `music2latent` package on your machine.
 - **JUCE, RTNeural, Elk's extension header**: fetched by CMake at pinned commits. Elk's header has no licence file upstream.
-- **Elk Audio's image of the board** (Figure 1, panel C): third-party. `figures/fig_system.tex` draws a labelled frame.
+- **Elk Audio's image of the board** as a separate file (Figure 1, panel C): third-party. `figures/fig_system.tex` draws a
+  labelled frame. The image appears, credited, inside the paper PDF, the poster and the thumbnail (`THIRD_PARTY.md`).
 - **The board's controls glue** (pots and switches over gRPC): adapted from an Elk example and not needed for the
   measurements.
 
@@ -146,4 +196,15 @@ Montréal hackathon (22–23 Aug 2026) and in the four weeks after it.
 
 ## Citation
 
-See `CITATION.cff`.
+```bibtex
+@inproceedings{eriksen2026neural,
+  title     = {Neural Codec Latent Distillation for Corpus Retrieval Synthesis on the Elk Stomp},
+  author    = {Eriksen, Trent and Segovia, Jazz and Blackett, Dennison},
+  booktitle = {Extended Abstracts for the Late-Breaking Demo Session of the 27th International Society for Music
+               Information Retrieval Conference (ISMIR)},
+  address   = {Abu Dhabi, UAE},
+  year      = {2026}
+}
+```
+
+GitHub's "Cite this repository" button reads the same entry from `CITATION.cff`.
